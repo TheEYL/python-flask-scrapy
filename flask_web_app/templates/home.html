@@ -4,5 +4,13 @@
       <input type="text" name="title">
       <input type="submit" value="Add">
     </form>
+
+    <h1>Movie list</h1>
+    {% for movie in movies %}
+    <!-- <img src="{{movie.url}}" alt=""> -->
+      <p>{{movie.title}}</p>
+    {% endfor %}
+
   </body>
+
 </html>

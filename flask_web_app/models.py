@@ -8,7 +8,7 @@ class Movies(db.Model):
   # uid = db.Column(db.Integer, primary_key = True)
   title = db.Column(db.String, primary_key = True)
   url = db.Column(db.String)
-  img = db.Column(db.String)
+  image = db.Column(db.String)
   # email = db.Column(db.String(120), unique=True)
   # pwdhash = db.Column(db.String(54))
 
