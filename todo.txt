@@ -1,0 +1,5 @@
+* add to the database a new primary key id that is auto incremented.//flask,scrapy and postgres
+* the image url that is being scrapped from the website return a link to an image view. Make another request to get the actual poster url // scrapy
+* design ui for the update and delete properties//flask
+* export data to json and csv using functions. //scrapy
+* use argpase to parse arguement to the web app and the scraper.
