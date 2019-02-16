@@ -7,12 +7,14 @@ from models import db, Movies
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-database="learningflask"
-user="learningflask"
-password="leo"
+database="postgres"
+user="postgres"
+# password="password"
 
 
-app.config[ 'SQLALCHEMY_DATABASE_URI' ] = 'postgres://'+user+':'+password+'@localhost:5432/'+database
+# app.config[ 'SQLALCHEMY_DATABASE_URI' ] = 'postgres://'+user+':'+password+'@localhost:5432/'+database
+app.config[ 'SQLALCHEMY_DATABASE_URI' ] = 'postgres://'+user+'@localhost:5432/'+database
+# TODO: make work automatically with installing postgres
 db.init_app(app)
 
 @app.route("/", methods=["GET", "POST"])
@@ -20,7 +22,7 @@ def home():
     if request.form:
         try:
             # print(request.form)
-            movie = Movies(title=request.form.get("title"),url=request.form.get("url"),image=request.form.get("image") )
+            movie = Movies(title=request.form.get("title"), url=request.form.get("url"), image=request.form.get("image"))
             db.session.add(movie)
             db.session.commit()
         except Exception as e:

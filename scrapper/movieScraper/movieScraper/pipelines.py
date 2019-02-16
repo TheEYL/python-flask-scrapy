@@ -10,11 +10,11 @@ class MoviescraperPipeline(object):
 
     def open_spider(self, spider):
         hostname = 'localhost'
-        username = 'learningflask'# the username when you create the database
-        password = 'leo' #change to your password
+        username = 'postgres'# the username when you create the database
+        # password = 'leo' #change to your password
 
-        database = 'learningflask'
-        self.connection = psycopg2.connect(host=hostname, user=username, password=password, dbname=database)
+        database = 'postgres'
+        self.connection = psycopg2.connect(host=hostname, user=username, dbname=database)
         self.cur = self.connection.cursor()
 
 
@@ -24,7 +24,7 @@ class MoviescraperPipeline(object):
 
     def process_item(self, item, spider):
         try:
-            self.cur.execute("insert into movies ( title, url, image) values(%s,%s, %s )",(item['title'],item['url'], item['img']))
+            self.cur.execute("insert into movies (title, url, image) values(%s,%s, %s )",(item['title'],item['url'], item['img']))
             self.connection.commit()
             # return item
         except Exception as e:
