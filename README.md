@@ -32,5 +32,6 @@ $ \d
 
 
 Now db created, scrappy time!
+$ source /python-flask-scrappy/bin/activate
 Go into directory with scrappy cd scrapper/movieScraper/movieScraper
-scrapy crawl imdb_scrap
+$ scrapy crawl imdb_scrap
