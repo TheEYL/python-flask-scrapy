@@ -12,10 +12,10 @@ class Movies(db.Model):
   # email = db.Column(db.String(120), unique=True)
   # pwdhash = db.Column(db.String(54))
 
-  def __init__(self, title, url, img):
+  def __init__(self, title, url, image):
     self.title = title.title()
     self.url = url.title()
-    self.img = img.title()
+    self.image = image.title()
     # self.email = email.lower()
     # self.set_password(password)
 
