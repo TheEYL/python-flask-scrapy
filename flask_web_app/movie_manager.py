@@ -1,18 +1,12 @@
 import os
-from flask import Flask
-from flask import render_template
-from flask import request
+from flask import Flask, render_template, request, redirect, url_for
 from models import db, Movies
-
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 database="postgres"
 user="postgres"
-# password="password"
 
-
-# app.config[ 'SQLALCHEMY_DATABASE_URI' ] = 'postgres://'+user+':'+password+'@localhost:5432/'+database
 app.config[ 'SQLALCHEMY_DATABASE_URI' ] = 'postgres://'+user+'@localhost:5432/'+database
 # TODO: make work automatically with installing postgres
 db.init_app(app)
