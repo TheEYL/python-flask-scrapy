@@ -13,6 +13,7 @@ class MoviescraperItem(scrapy.Item):
     title = scrapy.Field()
     url = scrapy.Field()
     img = scrapy.Field()
+    rating = scrapy.Field()
 
 class ImbdMovieList(scrapy.Item):
     movie_list = scrapy.Field()

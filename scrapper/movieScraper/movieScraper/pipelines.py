@@ -7,7 +7,6 @@ import psycopg2
 
 
 class MoviescraperPipeline(object):
-
     def open_spider(self, spider):
         hostname = 'localhost'
         username = 'postgres'# the username when you create the database
@@ -24,7 +23,7 @@ class MoviescraperPipeline(object):
 
     def process_item(self, item, spider):
         try:
-            self.cur.execute("insert into movies (title, url, image) values(%s,%s, %s )",(item['title'],item['url'], item['img']))
+            self.cur.execute("insert into movies (title, url, image, rating) values(%s,%s,%s,%s)",(item['title'],item['url'], item['img'], item['rating']))
             self.connection.commit()
             # return item
         except Exception as e:
