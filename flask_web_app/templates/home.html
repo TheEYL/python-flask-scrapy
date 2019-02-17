@@ -10,9 +10,8 @@
       <input type="submit" value="Add Movie">
     </form>
     <h1>Movie list</h1>
+    <h4>Total number of movies: {{ movies.__len__() }}</h4>
     {% for movie in movies[:50] %}
-    <!-- <img src="{{movie.image}}" alt=""> -->
-      <!-- <p>{{movie.title}}</p> -->
       <table>
         <tr>
           <th>{{movie.title}}</th>
@@ -20,15 +19,13 @@
         </tr>
         <tr>
           <td>
-            <form method="POST" action="./update">
-              <input type="hidden" value="{{movie.title}}" name="oldtitle">
+            <form method="POST" action="{{ url_for('update', id=movie.id) }}">
               <input type="text" value="{{movie.title}}" name="newtitle">
               <input type="submit" value="Update">
             </form>
           </td>
           <td>
             <form method="POST" action="{{ url_for('delete', id=movie.id) }}">
-              <input type="hidden" value="{{movie.id}}" name="id">
               <input type="submit" value="Delete">
             </form>
           </td>

@@ -27,12 +27,11 @@ def home():
     movies = Movies.query.all()
     return render_template("home.html", movies=movies)
 
-@app.route("/update", methods=["POST"])
-def update():
+@app.route("/update/<int:id>", methods=["POST"])
+def update(id):
     try:
         newtitle = request.form.get("newtitle")
-        oldtitle = request.form.get("oldtitle")
-        movie = Movies.query.filter_by(title=oldtitle).first()
+        movie = Movies.query.filter_by(id=id).first()
         movie.title = newtitle
         db.session.commit()
         return redirect("/")
