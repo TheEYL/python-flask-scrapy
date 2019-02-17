@@ -7,29 +7,34 @@
   </head>
   <body>
     <h1>Movies List</h1>
+    <form method="POST" action="{{ url_for('search') }}">
+        <input type="text" name="search" placeholder="Search by keyword">
+        <input type="submit" value="Search">
+    </form>
     <h4>Total number of movies: {{ movies.__len__() }}</h4>
     <p>
-      <button><a href="{{ url_for('create')}}">Add a new movie</a></button>
+      <button style="background-color:lime;"><a href="{{ url_for('create')}}">Add a new movie</a></button>
     </p>
-    {% for movie in movies[:50] %}
-      <table>
-        <tr><img src="{{movie.image}}" alt="{{movie.title}}"  width="200" height="270"></tr>
-        <tr>
-          <th><a href="{{movie.url}}">{{movie.title}}</a></th>
-          <td>Rating: {{movie.rating}}</td>
-        </tr>
-        <tr>
-            <td>
-              <span>
-                <button><a href="{{ url_for('update', id=movie.id)}}">Update</a></button>
-                <form method="POST" action="{{ url_for('delete', id=movie.id) }}">
-                  <input type="submit" value="Delete">
-                </form>
-              </span>
+      {% for movie in movies[:50] %}
+        <table>
+          <tr><img src="{{movie.image}}" alt="{{movie.title}}"  width="200" height="270"></tr>
+          <tr>
+            <th><a href="{{movie.url}}">{{movie.title}}</a></th>
+            <td>Rating: {{movie.rating}}</td>
+          </tr>
+          <tr>
+              <td>
+                <span>
+                  <button><a href="{{ url_for('update', id=movie.id)}}">Update</a></button>
+                  <form method="POST" action="{{ url_for('delete', id=movie.id) }}">
+                    <input type="submit" style="background-color:red;" value="Delete">
+                  </form>
+                </span>
+              </td>
             </td>
-          </td>
-        </tr>
-      </table>
-    {% endfor %}
+          </tr>
+        </table>
+      {% endfor %}
+      {% if movies is none or movies.__len__() == 0 %}<h3 style="font-style:italic;">No movies to display</h3>{% endif %}
   </body>
 </html>
