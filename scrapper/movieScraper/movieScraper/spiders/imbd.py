@@ -38,9 +38,8 @@ class ImbdSpider(scrapy.Spider):
     #         # yield movie
     #
     def getPosters(self, response):
-        href = response.xpath('//div[@class="poster"]/a/@href').extract()[0] #img
-        imgurl = response.urljoin(href)
-
+        imgsrc = response.xpath('//div[@class="poster"]/a/img/@src').extract()[0] #img
+        imgurl = response.urljoin(imgsrc)
         movie = MoviescraperItem()
         movie["title"] = response.xpath('//div[@class="title_wrapper"]/h1/text()').extract_first()
         movie["url"] = response.url
@@ -54,7 +53,6 @@ class ImbdSpider(scrapy.Spider):
 
     @staticmethod
     def getListAndLinks(response):
-
         table = response.xpath('//td[@class="titleColumn"]') #movies and links
         # movie = MoviescraperItem()
 

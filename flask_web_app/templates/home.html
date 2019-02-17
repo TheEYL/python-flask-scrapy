@@ -13,6 +13,7 @@
     <h4>Total number of movies: {{ movies.__len__() }}</h4>
     {% for movie in movies[:50] %}
       <table>
+        <tr><img src="{{movie.image}}" alt="{{movie.title}}"  width="200" height="270"></tr>
         <tr>
           <th>{{movie.title}}</th>
           <td><a href="{{movie.url}}">link</a></td>
