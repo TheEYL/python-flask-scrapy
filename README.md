@@ -34,4 +34,15 @@ $ \d
 #### After the db has been created, it is scrappy time!  
 $ source /python-flask-scrappy/bin/activate  
 Go into directory with scrappy cd scrapper/movieScraper/movieScraper  
-$ scrapy crawl imdb_scrap  
+$ scrapy crawl imdb_scrap
+
+
+### Screen Grabs of the application:
+#### Home page view:
+  ![Home page](home-screen.png "Home page")
+Create a new movie view:  
+  ![Create page](create-screen.png "Create page")
+#### Update an existing movie view:  
+  ![Update page](update-screen.png "Update page")
+#### Search results view:
+  ![Search Results page](search-results-none-screen.png "Search page")
