@@ -1,18 +1,16 @@
 <html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Movies List</title>
+  </head>
   <body>
-    <form method="POST" action="/">
-      Title
-      <input type="text" name="title">
-      Url
-      <input type="text" name="url">
-      Image address
-      <input type="text" name="image">
-      Rating
-      <input type="text" name="rating">
-      <input type="submit" value="Add Movie">
-    </form>
-    <h1>Movie list</h1>
+    <h1>Movies List</h1>
     <h4>Total number of movies: {{ movies.__len__() }}</h4>
+    <p>
+      <button><a href="{{ url_for('create')}}">Add a new movie</a></button>
+    </p>
     {% for movie in movies[:50] %}
       <table>
         <tr><img src="{{movie.image}}" alt="{{movie.title}}"  width="200" height="270"></tr>
@@ -21,20 +19,17 @@
           <td>Rating: {{movie.rating}}</td>
         </tr>
         <tr>
-          <td>
-            <form method="POST" action="{{ url_for('update', id=movie.id) }}">
-              <input type="text" value="{{movie.title}}" name="newtitle">
-              <input type="submit" value="Update">
-            </form>
-          </td>
-          <td>
-            <form method="POST" action="{{ url_for('delete', id=movie.id) }}">
-              <input type="submit" value="Delete">
-            </form>
+            <td>
+              <span>
+                <button><a href="{{ url_for('update', id=movie.id)}}">Update</a></button>
+                <form method="POST" action="{{ url_for('delete', id=movie.id) }}">
+                  <input type="submit" value="Delete">
+                </form>
+              </span>
+            </td>
           </td>
         </tr>
       </table>
     {% endfor %}
   </body>
-
 </html>

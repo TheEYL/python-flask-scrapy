@@ -28,17 +28,27 @@ def home():
     movies = Movies.query.all()
     return render_template("home.html", movies=movies)
 
-@app.route("/update/<int:id>", methods=["POST"])
+@app.route("/create", methods=["GET"])
+def create():
+    return render_template("create.html")
+
+@app.route("/update/<int:id>", methods=["GET", "POST"])
 def update(id):
-    try:
-        newtitle = request.form.get("newtitle")
+    if request.method == "POST":
+        try:
+            movie = Movies.query.filter_by(id=id).first()
+            movie.title = request.form.get("newtitle")
+            movie.url = request.form.get("newurl")
+            movie.image = request.form.get("newimage")
+            movie.rating = request.form.get("newrating")
+            db.session.commit()
+            return redirect("/")
+        except Exception as e:
+            print("Failed to update movie title")
+            print(e)
+    else:
         movie = Movies.query.filter_by(id=id).first()
-        movie.title = newtitle
-        db.session.commit()
-        return redirect("/")
-    except Exception as e:
-        print("Failed to update movie title")
-        print(e)
+        return render_template("update.html", movie=movie)
 
 @app.route("/delete/<int:id>", methods=["POST"])
 def delete(id):

@@ -1,0 +1,35 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Add a Movie </title>
+</head>
+<body>
+  <button>
+    <a href="{{ url_for('home')}}">
+      Back to home
+    </a>
+  </button>
+  <h1>Add a new movie</h1>
+  <form method="POST" action="/">
+    <p>
+      <span>Title:&nbsp</span>
+      <input type="text" name="title">
+    </p>
+    <p>
+      <span>IMDB page url:&nbsp</span>
+      <input type="text" name="url">
+    </p>
+    <p>
+      <span>Image address:&nbsp</span>
+      <input type="text" name="image">
+    </p>
+    <p>
+      <span>Rating</span>
+      <input type="text" name="rating">
+    </p>
+    <input type="submit" value="Add Movie">
+  </form>
+</body>
+</html>
