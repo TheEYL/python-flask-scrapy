@@ -15,7 +15,6 @@ class ImbdSpider(scrapy.Spider):
         # table = response.xpath('//td[@class="titleColumn"]/a/text()')
         # print(table)
         self.getList(response)
-
         self.getListAndLinks(response)
         # pass
         for k,next_url in ImbdSpider.moviedict.items():
@@ -42,6 +41,7 @@ class ImbdSpider(scrapy.Spider):
         imgurl = response.urljoin(imgsrc)
         movie = MoviescraperItem()
         movie["title"] = response.xpath('//div[@class="title_wrapper"]/h1/text()').extract_first()
+        movie["rating"] = response.xpath('//div[@class="ratingValue"]/strong/span/text()').extract()[0]
         movie["url"] = response.url
         movie["img"] = imgurl
         yield movie

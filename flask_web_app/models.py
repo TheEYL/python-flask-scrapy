@@ -9,13 +9,15 @@ class Movies(db.Model):
   title = db.Column(db.String)
   url = db.Column(db.String)
   image = db.Column(db.String)
+  rating = db.Column(db.String)
   # email = db.Column(db.String(120), unique=True)
   # pwdhash = db.Column(db.String(54))
 
-  def __init__(self, title, url, image):
+  def __init__(self, title, url, image, rating):
     self.title = title.title()
     self.url = url.title()
     self.image = image.title()
+    self.rating= rating.title()
     # self.email = email.lower()
     # self.set_password(password)
 

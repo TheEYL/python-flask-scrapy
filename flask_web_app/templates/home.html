@@ -7,6 +7,8 @@
       <input type="text" name="url">
       Image address
       <input type="text" name="image">
+      Rating
+      <input type="text" name="rating">
       <input type="submit" value="Add Movie">
     </form>
     <h1>Movie list</h1>
@@ -15,8 +17,8 @@
       <table>
         <tr><img src="{{movie.image}}" alt="{{movie.title}}"  width="200" height="270"></tr>
         <tr>
-          <th>{{movie.title}}</th>
-          <td><a href="{{movie.url}}">link</a></td>
+          <th><a href="{{movie.url}}">{{movie.title}}</a></th>
+          <td>Rating: {{movie.rating}}</td>
         </tr>
         <tr>
           <td>

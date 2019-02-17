@@ -18,7 +18,8 @@ def home():
             title = request.form.get("title")
             url = request.form.get("url")
             image = request.form.get("image")
-            movie = Movies(title=title,url=url,image=image)
+            rating = request.form.get("rating")
+            movie = Movies(title=title, url=url, image=image, rating=rating)
             db.session.add(movie)
             db.session.commit()
         except Exception as e:
