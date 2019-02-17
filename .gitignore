@@ -1,1 +1,4 @@
 theEnv/*
+flask_web_app/__pycache__/*
+scrapper/movieScraper/movieScraper/__pycache__/*
+scrapper/movieScraper/movieScraper/spiders/__pycache__/*
