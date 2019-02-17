@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Modify Movie</title>
+  </head>
+  <body style="align:center;">
+    <h1>Modify</h1>
+    <button>
+      <a href="{{ url_for('home')}}">
+        Back to home
+      </a>
+    </button>
+    <table>
+      <th style="align:center;"><img src="{{movie.image}}" alt="{{movie.title}}"  width="200" height="270"></th>
+      <tr>
+        <td>
+          <form method="POST" action="{{ url_for('update', id=movie.id) }}">
+            <p>
+              <span>Title:&nbsp</span>
+              <input type="text" value="{{movie.title}}" name="newtitle">
+            </p>
+            <p>
+              <span>IMDB page url:&nbsp</span>
+              <input type="text" value="{{movie.url}}" name="newurl">
+            </p>
+            <p>
+              <span>Image address:&nbsp</span>
+              <input type="text" value="{{movie.image}}" name="newimage">
+            </p>
+            <p>
+              <span>Rating:&nbsp</span>
+              <input type="text" value="{{movie.rating}}" name="newrating">
+            </p>
+            <p>
+              <input style="background-color:blue;color:white;" type="submit" value="Update">
+            </p>
+          </form>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <form method="POST" action="{{ url_for('delete', id=movie.id) }}">
+            <input style="background-color:red;" type="submit" value="Delete">
+          </form>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
